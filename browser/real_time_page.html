@@ -1,0 +1,32 @@
+<!--Show the last data in WEG PAGE-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+	<!--Configurations of Page-->
+	  <meta charset="utf-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="style.css">
+	  <link rel="shortcut icon" href="icon.png" >
+	  <title>REAL TIME DATA</title>
+	</head>
+	<body>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			//Javascript code to load get_last_data.php each 1 s.
+			$(document).ready(function() {
+			$.ajaxSetup({ cache: false }); // This part addresses an IE bug. without it, IE will only load the first number and will never refresh
+
+			setInterval(function() {
+			$('#results').load('get_last_data.php');}, 1000); 
+			// the "1000" here refers to the time to refresh the div. it is in milliseconds.
+			});
+
+		</script>
+		<h1>Real Time </h1> 
+			<div id="results">LOAD DATA..</div>
+		<p></p>
+		<!--Link to Machine Position-->
+		<div id="button"><a href="position_map.php">Map Machine Position </a></div>
+	</body>
+</html>
